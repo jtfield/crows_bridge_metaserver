@@ -1,5 +1,5 @@
 # crows_bridge_metaserver
-This reposity houses the source code for the Gate of Storms unofficial metaserver for Myth 2.
+This reposity houses the source code for the Crows Bridge unofficial metaserver for Myth 2.
 
 A live version of the metaserver can be found at http://www.crowsbridge.net/.
 
