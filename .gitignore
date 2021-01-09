@@ -15,4 +15,4 @@ www_config.json
 myth_metaserver_daemon
 myth_metaserver
 deploy.sh
-metaserver_config.d
+source/metaserver_config.d
