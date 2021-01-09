@@ -794,9 +794,15 @@ final class RoomConnection : Connection
                 info.ranked_score_datum.numerical_ranking = cast(short)server_info.stats_total.rank;
                 info.overall_rank_data.total_users        = server_info.stats_total.total_player_count;
 
+                info.ranked_score_datum.games_played      = 666;
+                info.ranked_score_datum.numerical_ranking = 1;
+                info.overall_rank_data.total_users        = 666666;
+
+
                 // String into null terminated - must manually convert to mac roman since it's not a "string", but a char array
                 {
-                    ubyte[] encoded_player = string_to_mac_roman(server_info.stats_total.top_player_user_name);
+		    ubyte[] encoded_player = string_to_mac_roman(server_info.stats_total.top_player_user_name);
+                    //ubyte[] encoded_player = string_to_mac_roman("Thalander");
                     size_t length = min(encoded_player.length, info.overall_rank_data.ranked_game_data.top_ranked_player.sizeof - 1);
                     info.overall_rank_data.ranked_game_data.top_ranked_player[0..length] = encoded_player[0..length];
                     info.overall_rank_data.ranked_game_data.top_ranked_player[length] = 0; // Null terminate
@@ -805,21 +811,30 @@ final class RoomConnection : Connection
                 // TODO: Can clean this up with CTFE or similar
                 // NOTE: These two fields being "short"s could be a problem in the long run :S
                 info.ranked_score_datum.points                                   = cast(short)server_info.stats_total.points.val;
+                info.ranked_score_datum.points                                   = 666;
                 info.overall_rank_data.ranked_game_data.points.best              = server_info.stats_total.points.max;
+                info.overall_rank_data.ranked_game_data.points.best              = 666;
                 info.overall_rank_data.ranked_game_data.points.average           = server_info.stats_total.points.avg;
 
                 info.ranked_score_datum.wins                                     = cast(short)server_info.stats_total.wins.val;
                 info.overall_rank_data.ranked_game_data.wins.best                = server_info.stats_total.wins.max;
+                info.overall_rank_data.ranked_game_data.wins.best                = 666;
                 info.overall_rank_data.ranked_game_data.wins.average             = server_info.stats_total.wins.avg;
 
                 info.ranked_score_datum.damage_inflicted                         = server_info.stats_total.damage_given.val;
                 info.overall_rank_data.ranked_game_data.damage_inflicted.best    = server_info.stats_total.damage_given.max;
+                info.overall_rank_data.ranked_game_data.damage_inflicted.best    = 666;
                 info.overall_rank_data.ranked_game_data.damage_inflicted.average = server_info.stats_total.damage_given.avg;
 
                 info.ranked_score_datum.damage_received                          = server_info.stats_total.damage_taken.val;
                 info.overall_rank_data.ranked_game_data.damage_received.best     = server_info.stats_total.damage_taken.max;
                 info.overall_rank_data.ranked_game_data.damage_received.average  = server_info.stats_total.damage_taken.avg;
 
+                info.ranked_score_datum.points                                   = 666;
+
+                info.ranked_score_datum.damage_inflicted                         = 666;
+                info.ranked_score_datum.wins                                     = 666;
+ 
                 // TODO: Then the same as an array for each game type, etc.
             }
 
