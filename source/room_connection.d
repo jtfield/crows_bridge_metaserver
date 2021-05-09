@@ -801,7 +801,7 @@ final class RoomConnection : Connection
 
                 // String into null terminated - must manually convert to mac roman since it's not a "string", but a char array
                 {
-		    ubyte[] encoded_player = string_to_mac_roman(server_info.stats_total.top_player_user_name);
+		            ubyte[] encoded_player = string_to_mac_roman(server_info.stats_total.top_player_user_name);
                     //ubyte[] encoded_player = string_to_mac_roman("Thalander");
                     size_t length = min(encoded_player.length, info.overall_rank_data.ranked_game_data.top_ranked_player.sizeof - 1);
                     info.overall_rank_data.ranked_game_data.top_ranked_player[0..length] = encoded_player[0..length];

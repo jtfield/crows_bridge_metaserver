@@ -332,6 +332,23 @@ class DataStoreMysql : DataStoreInterface
                         player.data.game_version, player.data.build_number, player.data.ip_address,
                         player.host, player.captain, player.dropped,
                         player.units_killed, player.units_lost, player.damage_given, player.damage_taken);
+
+                    // WORKING HERE FOR THE MOMENT
+                    // Query for any user points, units killed, units lost, damage given and damage taken data
+                    db.execute(
+                        "SELECT id, ranked_points, wins, damage_given, damage_taken, games_played, units_killed, units_lost
+                        FROM metaserver_users
+                        WHERE id = ?;", player.data.user_id, (MySQLRow row) {
+            
+                    int user_id = row.user_id.get!int;
+                    string db_password_token = row.password_token.get!string;
+                    int wins = row.wins.get!int;
+                    int dmg_given = row.damage_given.get!int;
+
+                    
+                    }); // END OF ACCESING RANKED DATA
+                    //TODO: make function that calculates updated scoring info for the player
+                    // and adds it to totals in database 
                 }
 
                 player_inserter.flush();        // Maybe defer this one
